@@ -226,15 +226,19 @@ return {
             end
             audio.playSound(selectSound)
         elseif input:pressed("left") then
-            songDifficulty = songDifficulty - 1 
-            if songDifficulty < 1 then
-                songDifficulty = 2
+            if weekNum == 1 then
+                songDifficulty = songDifficulty - 1 
+                if songDifficulty < 1 then
+                    songDifficulty = 2
+                end
             end
             audio.playSound(selectSound)
         elseif input:pressed("right") then
-            songDifficulty = songDifficulty + 1
-            if songDifficulty > 2 then
-                songDifficulty = 1
+            if weekNum == 1 then
+                songDifficulty = songDifficulty + 1
+                if songDifficulty > 2 then
+                    songDifficulty = 1
+                end
             end
             audio.playSound(selectSound)
         elseif input:pressed("confirm") then
