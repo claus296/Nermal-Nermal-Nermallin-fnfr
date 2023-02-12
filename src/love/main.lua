@@ -152,29 +152,13 @@ function love.load()
 
 	-- Load stages
 	stages = {
-		["stage"] = require "stages.stage",
-		["hauntedHouse"] = require "stages.hauntedHouse",
-		["city"] = require "stages.city",
-		["sunset"] = require "stages.sunset",
-		["mall"] = require "stages.mall",
-		["school"] = require "stages.school",
-		["tank"] = require "stages.tank",
 	}
-
-	mods = {
-		weekMeta = {},
-		modNames = {},
-		WeekData = {}
-	}
-	modloader = require "modules.modloader"
-	modloader.load()
 
 	-- Load menus
 	menu = require "states.menu.menu"
 	menuWeek = require "states.menu.menuWeek"
 	menuSelect = require "states.menu.menuSelect"
 	menuFreeplay = require "states.menu.menuFreeplay"
-	menuChooseFreeplay = require "states.menu.menuChooseFreeplay"
 	menuSettings = require "states.menu.menuSettings"
 	menuCredits = require "states.menu.menuCredits"
 
