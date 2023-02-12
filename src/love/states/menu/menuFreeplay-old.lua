@@ -35,8 +35,7 @@ local menuNames = {
 
 local difficultyStrs = {
 	"easy",
-	"normal",
-	"hard"
+	"gay"
 }
 
 local selectSound = love.audio.newSource("sounds/menu/select.ogg", "static")

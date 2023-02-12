@@ -113,22 +113,16 @@ return {
 		end
 
 		if not (countingDown or graphics.isFading()) and not (inst:isPlaying() and voices:isPlaying()) and not paused then
-			if storyMode and song < 1 then
-				song = song + 1
+			status.setLoading(true)
 
-				self:load()
-			else
-				status.setLoading(true)
+			graphics.fadeOut(
+				0.5,
+				function()
+					Gamestate.switch(menu)
 
-				graphics.fadeOut(
-					0.5,
-					function()
-						Gamestate.switch(menu)
-
-						status.setLoading(false)
-					end
-				)
-			end
+					status.setLoading(false)
+				end
+			)
 		end
 		weeksSpecialNote:updateUI(dt)
 	end,

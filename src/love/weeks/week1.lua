@@ -47,35 +47,46 @@ return {
 		nermBlock = graphics.newImage(love.graphics.newImage(graphics.imagePath("nermBlock")))
 		nermBlock.sizeX, nermBlock.sizeY = 1.3, 0.2
 		nermBlock.x, nermBlock.y = 630, 700
+
 		nermBlock2 = graphics.newImage(love.graphics.newImage(graphics.imagePath("nermBlock")))
 		nermBlock2.sizeX, nermBlock2.sizeY = 1.3, -0.2
 		nermBlock2.x, nermBlock2.y = 630, 50
+
 		garfjumpscare = graphics.newImage(love.graphics.newImage(graphics.imagePath("jumpscare")))
 		garfjumpscare.x, garfjumpscare.y = 600, 350
 		garfjumpscare.sizeY, garfjumpscare.sizeX = 1, 1.4
+
 		house = graphics.newImage(love.graphics.newImage(graphics.imagePath("nermal/house")))
 		house.sizeX, house.sizeY = 1.8
+
 		nermNoteWarn = graphics.newImage(love.graphics.newImage(graphics.imagePath("mech-warn/nermnoteWarn")))
 		nermNoteWarn.x, nermNoteWarn.y = 1000, 400
 		nermNoteWarn.sizeX, nermNoteWarn.sizeY = 2
+
 		nermWarnText = graphics.newImage(love.graphics.newImage(graphics.imagePath("mech-warn/nermWarnText")))
 		nermWarnText.x, nermWarnText.y = 400, 400
 		nermWarnText.sizeX, nermWarnText.sizeY = 1.3
+
 		gayWarn = graphics.newImage(love.graphics.newImage(graphics.imagePath("mech-warn/gayWarn")))
 		gayWarn.x, gayWarn.y = 600, 600
 		gayWarn.sizeX, gayWarn.sizeY = 0.7
+
 		garfNoteWarn = graphics.newImage(love.graphics.newImage(graphics.imagePath("mech-warn/garfnoteWarn")))
 		garfNoteWarn.x, garfNoteWarn.y = 1150, 600
 		garfNoteWarn.sizeX, garfNoteWarn.sizeY = 1.1
+
 		garfWarnText = graphics.newImage(love.graphics.newImage(graphics.imagePath("mech-warn/garfWarnText")))
 		garfWarnText.x, garfWarnText.y = 400, 300
 		garfWarnText.sizeX, garfWarnText.sizeY = 1.3
+
 		arrow = graphics.newImage(love.graphics.newImage(graphics.imagePath("mech-warn/arrow")))
 		arrow.x, arrow.y = 950, 600
 		arrow.sizeX, arrow.sizeY = 0.5
+
 		jumpNoteWarn = graphics.newImage(love.graphics.newImage(graphics.imagePath("mech-warn/jumpNoteWarn")))
 		jumpNoteWarn.x, jumpNoteWarn.y = 1000, 300
 		jumpNoteWarn.sizeX, jumpNoteWarn.sizeY = 2
+
 		enemy = love.filesystem.load("sprites/nermal/nermal.lua")()
 		garfjump = love.filesystem.load("sprites/nermal/jumpIn.lua")()
 		ouchie = love.filesystem.load("sprites/nermal/ouchie.lua")()
@@ -106,13 +117,8 @@ return {
 		weeksSpecialNote:load()
 
 		if song == 3 then
-			if songDifficulty == 2 then
-				inst = love.audio.newSource("songs/abuse-gay/inst.ogg", "stream")
-				voices = love.audio.newSource("songs/abuse-gay/voices.ogg", "stream")
-			else
-				inst = love.audio.newSource("songs/abuse/inst.ogg", "stream")
-				voices = love.audio.newSource("songs/abuse/voices.ogg", "stream")
-			end
+			inst = love.audio.newSource("songs/abuse-" .. difficulty .. "/inst.ogg", "stream")
+			voices = love.audio.newSource("songs/abuse-" .. difficulty .. "/voices.ogg", "stream")
 
 			curEnemy = "garfield"
 			curPlayer = "nermalAngry"
@@ -158,13 +164,8 @@ return {
 				weeksSpecialNote:setupCountdown()
 			end)
 		elseif song == 2 then
-			if songDifficulty == 2 then
-				inst = love.audio.newSource("songs/xd-gay/inst.ogg", "stream")
-				voices = love.audio.newSource("songs/xd-gay/voices.ogg", "stream")
-			else
-				inst = love.audio.newSource("songs/xd/inst.ogg", "stream")
-				voices = love.audio.newSource("songs/xd/voices.ogg", "stream")
-			end
+			inst = love.audio.newSource("songs/xd-" .. difficulty .. "/inst.ogg", "stream")
+			voices = love.audio.newSource("songs/xd-" .. difficulty .. "/voices.ogg", "stream")
 
 			curEnemy = "nermalAngry"
 			curPlayer = "bfShot"
@@ -177,13 +178,8 @@ return {
 
 			boyfriend.x, boyfriend.y = -160, 440
 		else
-			if songDifficulty ~= 2 then
-				inst = love.audio.newSource("songs/nermal/inst.ogg", "stream")
-				voices = love.audio.newSource("songs/nermal/voices.ogg", "stream")
-			else
-				inst = love.audio.newSource("songs/nermal-gay/inst.ogg", "stream")
-				voices = love.audio.newSource("songs/nermal-gay/voices.ogg", "stream")
-			end
+			inst = love.audio.newSource("songs/nermal-" .. difficulty .. "/inst.ogg", "stream")
+			voices = love.audio.newSource("songs/nermal-" .. difficulty .. "/voices.ogg", "stream")
 		end
 
 		self:initUI()
@@ -196,23 +192,11 @@ return {
 		weeksSpecialNote:initUI()
 
 		if song == 3 then
-			if songDifficulty == 2 then
-				weeksSpecialNote:generateNotes(love.filesystem.load("songs/abuse-gay/abuse-gay.lua")())
-			else
-				weeksSpecialNote:generateNotes(love.filesystem.load("songs/abuse/abuse-easy.lua")())
-			end
+			weeksSpecialNote:generateNotes(love.filesystem.load("songs/abuse-" .. difficulty .. "/abuse-" .. difficulty .. ".lua")())
 		elseif song == 2 then
-			if songDifficulty == 2 then
-				weeksSpecialNote:generateNotes(love.filesystem.load("songs/xd-gay/xd-gay.lua")())
-			else
-				weeksSpecialNote:generateNotes(love.filesystem.load("songs/xd/xd-easy.lua")())
-			end
+			weeksSpecialNote:generateNotes(love.filesystem.load("songs/xd-" .. difficulty .. "/xd-" .. difficulty .. ".lua")())
 		else
-			if songDifficulty ~= 2 then
-				weeksSpecialNote:generateNotes(love.filesystem.load("songs/nermal/nermal-easy.lua")())
-			else
-				weeksSpecialNote:generateNotes(love.filesystem.load("songs/nermal-gay/nermal-gay.lua")())
-			end
+			weeksSpecialNote:generateNotes(love.filesystem.load("songs/nermal-" .. difficulty .. "/nermal-" .. difficulty .. ".lua")())
 		end
 	end,
 
@@ -393,23 +377,24 @@ return {
 			end
 		elseif storyMode and not died and song == 1 then
 			if musicTime >= 10 then
-				if musicTime <= 300 then
-					fadingWarn = fadingWarn + 0.035
+				if musicTime <= 1100 then
+					fadingWarn = fadingWarn + 1 * love.timer.getDelta()
 				end
 			end
 			if musicTime >= 3000 then
-				fadingWarn = fadingWarn - 0.035
+				fadingWarn = fadingWarn - 2.3 * love.timer.getDelta()
 			end
 			graphics.setColor(0, 0, 0, fadingWarn)
+			print(fadingWarn)
 			love.graphics.rectangle("fill", 0, 0, 999999, 999999)
 
 			graphics.setColor(1, 1, 1)
 
 			if musicTime >= 10 then
-				fadingWarn2 = fadingWarn2 + 0.035
+				fadingWarn2 = fadingWarn2 + 1 * love.timer.getDelta()
 			end
 			if musicTime >= 3800 then
-				fadingWarn2 = fadingWarn2 - fadingWarn2
+				fadingWarn2 = fadingWarn2 - 1 * love.timer.getDelta()
 			end
 			graphics.setColor(1, 1, 1, fadingWarn2)
 			if musicTime >= 10 then
