@@ -385,7 +385,6 @@ return {
 				fadingWarn = fadingWarn - 2.3 * love.timer.getDelta()
 			end
 			graphics.setColor(0, 0, 0, fadingWarn)
-			print(fadingWarn)
 			love.graphics.rectangle("fill", 0, 0, 999999, 999999)
 
 			graphics.setColor(1, 1, 1)
