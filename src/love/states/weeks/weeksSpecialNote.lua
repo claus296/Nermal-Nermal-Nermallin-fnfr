@@ -617,6 +617,15 @@ return {
 							for j = 1, #boyfriendNotesJump[2] do 
 								boyfriendNotesJump[2][j].orientation = 124.08-- left note to down note
 							end
+							for j = 1, #enemyNotesJump[3] do 
+								enemyNotesJump[3][j].orientation = 120.95-- left note to up note
+							end
+							for j = 1, #enemyNotesJump[4] do 
+								enemyNotesJump[4][j].orientation = 122.45-- left note to right note
+							end
+							for j = 1, #enemyNotesJump[2] do 
+								enemyNotesJump[2][j].orientation = 124.08-- left note to down note
+							end
 						end
 					end
 					if noteType == 0 or noteType == 4 then
@@ -2214,6 +2223,11 @@ return {
 				else
 					graphics.setColor(1, 1, 1, 1)
 				end
+				
+				if week == 3 then
+					graphics.setColor(1, 1, 1, fading2)
+				end
+
 				if not paused then
 					if not pixel then
 						if not settings.downscroll then
@@ -2229,6 +2243,11 @@ return {
 						end
 					end
 				end
+				
+				if week == 3 then
+					graphics.setColor(1, 1, 1)
+				end
+
 				if hitSick then
 					if not settings.botPlay then
 						if input:pressed("gameLeft") then

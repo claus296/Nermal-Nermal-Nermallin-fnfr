@@ -23,7 +23,7 @@ return {
 	enter = function(self, from)
 		local boyfriend = fakeBoyfriend or boyfriend
 		fading1 = 0
-		fading2 = 1
+		fading2 = 0
 		fadingWarn = 0
 		fadingWarn2 = 0
 		fadingWarnAbuse = 0

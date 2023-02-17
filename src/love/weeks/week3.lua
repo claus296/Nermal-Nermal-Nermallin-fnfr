@@ -26,7 +26,7 @@ return {
 		pauseColor = {129, 100, 223}
 		weeksSpecialNote:enter()
 		fading1 = 0
-		fading2 = 1
+		fading2 = 0
 
 		cam.sizeX, cam.sizeY = 0.7, 0.7
 		camScale.x, camScale.y = 0.7, 0.7
@@ -85,8 +85,19 @@ return {
 
 		delta = love.timer.getDelta()
 
+		if musicTime >= 29500 then
+			enemy.x, enemy.y = love.math.random(-280,-180), love.math.random(360,460)
+		end
 		if musicTime >= 29700 then
 			love.event.quit()
+		end
+
+		if musicTime <= 29000 then
+			if enemy:getAnimName() ~= "idle" then
+				enemy.x, enemy.y = love.math.random(-280,-180), love.math.random(360,460) -- funny screen shake
+			else
+				enemy.x, enemy.y = -280, 360
+			end
 		end
 
 		if health >= 80 then
@@ -150,14 +161,9 @@ return {
 		if not paused then
 			weeksSpecialNote:drawUI()
 		end
-		graphics.setColor(0, 0, 0, fading2)
 
 		if musicTime >= 14483.8709677419 then
-			fading2 = fading2 - 0.015
-		end
-
-		if not paused then
-			love.graphics.rectangle("fill", 350, 0, 550, 150)
+			fading2 = fading2 + 0.015
 		end
 
 		graphics.setColor(1, 1, 1)
@@ -180,6 +186,7 @@ return {
 		nermBlock2 = nil
 		garfjumpscare = nil
 		fading1 = 0
+		fading2 = 0
 
 		weeksSpecialNote:leave()
 	end
